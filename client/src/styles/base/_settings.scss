@@ -6,6 +6,7 @@ $color-grey-dark: #666;
 $color-grey-middle: #999;
 $color-grey-light: #eee;
 $color-blue: #3483fa;
+$width-xl: 1200px;
 
 // Globals
 * {
@@ -33,6 +34,16 @@ button {
   border: none;
   background: none;
   font-family: $font-family;
-  all: unset;
   cursor: pointer;
+}
+
+.container {
+  max-width: $width-xl;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.img-responsive {
+  max-width: 100%;
 }

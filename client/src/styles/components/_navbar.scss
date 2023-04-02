@@ -1,0 +1,35 @@
+.navbar {
+  background-color: $color-yellow;
+  position: sticky;
+  top: 0;
+
+  .navbar-wrapper {
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px;
+
+    .navbar-search {
+      display: flex;
+
+      .navbar-search-input {
+        width: 100%;
+        padding: 0.5rem 1rem;
+        font-size: 18px;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+        border: none;
+      }
+
+      .navbar-search-button {
+        background-color: #eee;
+        width: 2.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
