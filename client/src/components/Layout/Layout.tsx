@@ -9,7 +9,9 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <main className="container">
+        <section className="layout-section">{children}</section>
+      </main>
       <Footer />
     </>
   );
