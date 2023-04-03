@@ -1,0 +1,16 @@
+@mixin btn-theme($color) {
+  background-color: $color;
+  color: $color-white;
+  padding: 10px;
+  border-radius: $border-radius;
+  width: 100%;
+  transition: $transition;
+
+  &:hover {
+    filter: drop-shadow(0 5px 4px $color-grey-middle);
+  }
+}
+
+.btn-primary {
+  @include btn-theme($color-blue);
+}

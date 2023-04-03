@@ -1,9 +1,10 @@
+import GridDetail from "../../components/GridDetail";
 import Layout from "../../components/Layout";
 
 const Detail = () => {
   return (
     <Layout>
-      <div>Detail</div>
+      <GridDetail />
     </Layout>
   );
 };
