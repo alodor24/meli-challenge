@@ -1,0 +1,15 @@
+.footer {
+  background-color: $color-white;
+  padding: 20px 16px;
+  border-top: 1px solid $color-grey-light;
+
+  .footer-copy {
+    text-align: center;
+    font-size: 16px;
+    color: $color-grey-middle;
+
+    .footer-link {
+      color: $color-grey-dark;
+    }
+  }
+}
