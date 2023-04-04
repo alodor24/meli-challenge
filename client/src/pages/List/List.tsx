@@ -1,9 +1,13 @@
+import Card from "../../components/Card";
 import Layout from "../../components/Layout";
 
 const List = () => {
   return (
     <Layout>
-      <div>List</div>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </Layout>
   );
 };

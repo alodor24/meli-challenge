@@ -13,6 +13,7 @@ const Navbar = () => {
             alt="Logo Mercado Libre"
             title="Mercado Libre"
             width={70}
+            loading="lazy"
           />
         </Link>
 
@@ -23,7 +24,7 @@ const Navbar = () => {
             type="search"
           />
           <button className="navbar-search-button">
-            <img src={IconSearch} alt="Icon Search" width={18} />
+            <img src={IconSearch} alt="Icon Search" width={18} loading="lazy" />
           </button>
         </form>
       </div>

@@ -8,6 +8,7 @@ const GridDetail = () => {
           className="img-responsive"
           src="/assets/images/iPhonePro14.jpg"
           alt=""
+          loading="lazy"
         />
       </figure>
 
@@ -18,6 +19,12 @@ const GridDetail = () => {
           <span>$ </span>
           1.980
           <sup className="grid-detail-sidebar-price-decimal">00</sup>
+          <img
+            className="grid-detail-sidebar-shipping"
+            src="/assets/images/icon-shipping.png"
+            alt=""
+            loading="lazy"
+          />
         </h2>
         <Button text="Comprar" />
       </aside>

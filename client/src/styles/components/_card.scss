@@ -1,0 +1,64 @@
+@mixin card-text-theme($font-size: 24px, $font-weight: 400) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $color-dark;
+}
+
+.card {
+  background-color: $color-white;
+  padding: 16px;
+  border-bottom: solid 1px $color-grey-light;
+  transition: $transition;
+
+  &:hover {
+    position: relative;
+    z-index: 1;
+    box-shadow: $shadow;
+  }
+
+  .card-image {
+    border-radius: $border-radius;
+  }
+
+  .card-price {
+    margin-top: 16px;
+    margin-bottom: 32px;
+    @include card-text-theme();
+
+    .card-price-decimal {
+      font-size: 12px;
+    }
+
+    .card-shipping {
+      width: 20px;
+      margin-left: 10px;
+    }
+  }
+
+  .card-title {
+    @include card-text-theme($font-size: 18px, $font-weight: 500);
+  }
+
+  .card-address {
+    display: block;
+    margin-top: 16px;
+    margin-right: 32px;
+    @include card-text-theme($font-size: 12px);
+  }
+
+  @media (min-width: $breakpoint-small) {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+
+    .card-container-image {
+      max-width: 180px;
+
+      .card-image {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+      }
+    }
+  }
+}
