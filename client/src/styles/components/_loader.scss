@@ -1,0 +1,25 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .spinner {
+    border: 5px solid $color-grey-light;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border-left-color: $color-blue;
+    animation: spin 1s ease infinite;
+  }
+}

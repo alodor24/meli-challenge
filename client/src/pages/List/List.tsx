@@ -1,5 +1,6 @@
 import Card from "../../components/Card";
 import Layout from "../../components/Layout";
+import Loader from "../../components/Loader";
 import useGetItemsList from "../../hooks/useGetItemsList";
 
 const List = () => {
@@ -9,7 +10,7 @@ const List = () => {
     <Layout>
       <>
         {isLoading ? (
-          "Loading"
+          <Loader />
         ) : (
           <div>
             {(data?.items || []).map((item) => (

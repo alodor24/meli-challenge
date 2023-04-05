@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Button from "../Button";
 import useGetItemDetail from "../../hooks/useGetItemDetail";
 import { currencyFormatter } from "../../helpers/utils";
+import Loader from "../Loader";
 
 const GridDetail = () => {
   const { itemId } = useParams<{ itemId: string }>();
@@ -10,7 +11,7 @@ const GridDetail = () => {
   return (
     <>
       {isLoading ? (
-        "Loading..."
+        <Loader />
       ) : (
         <div className="grid-detail">
           <figure className="grid-detail-container-image">
