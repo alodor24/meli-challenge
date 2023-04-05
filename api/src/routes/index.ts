@@ -12,7 +12,7 @@ const BASE_URL = process.env.BASE_URL;
 const LIMIT = 4;
 
 // Get all Items
-router.get("/", async (req, res) => {
+router.get("/items", async (req, res) => {
   const { q } = req.query;
 
   try {
@@ -38,8 +38,8 @@ router.get("/", async (req, res) => {
           title,
           price: {
             currency: currency_id,
-            amount: Math.floor(price).toString(),
-            decimals: ((price % 1) * 100).toFixed(0),
+            amount: Math.floor(price),
+            decimals: Number(((price % 1) * 100).toFixed(0)),
           },
           picture: thumbnail,
           condition,

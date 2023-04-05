@@ -1,35 +1,59 @@
 import { Link } from "react-router-dom";
+import { ItemPrice } from "../../constants/types";
+import { currencyFormatter } from "../../helpers/utils";
 
-const Card = () => {
+type Props = {
+  id: string;
+  image: string;
+  price: ItemPrice;
+  freeShipping: boolean;
+  title: string;
+  location: string;
+};
+
+const Card: React.FC<Props> = ({
+  id,
+  image,
+  price,
+  freeShipping,
+  title,
+  location,
+}) => {
   return (
-    <Link to="/detail">
+    <Link to={`/items/${id}`}>
       <article className="card">
         <figure className="card-container-image">
           <img
             className="card-image img-responsive"
-            src="/assets/images/iPhonePro14.jpg"
-            alt=""
+            src={image}
+            alt={title}
             loading="lazy"
           />
         </figure>
 
         <div>
           <h3 className="card-price">
-            <span>$ </span>
-            1.980
-            <sup className="card-price-decimal">00</sup>
-            <img
-              className="card-shipping"
-              src="/assets/images/icon-shipping.png"
-              alt=""
-              loading="lazy"
-            />
+            {currencyFormatter({
+              currency: price.currency,
+              value: price.amount,
+            })}
+            <sup className="card-price-decimal">
+              {price.decimals > 0 ? price.decimals : "00"}
+            </sup>
+            {freeShipping && (
+              <img
+                className="card-shipping"
+                src="/assets/images/icon-shipping.png"
+                alt="Free Shipping Icon"
+                loading="lazy"
+              />
+            )}
           </h3>
 
-          <h2 className="card-title">Título del producto</h2>
+          <h2 className="card-title">{title}</h2>
         </div>
 
-        <small className="card-address">Capital Federal</small>
+        <small className="card-address">{location}</small>
       </article>
     </Link>
   );

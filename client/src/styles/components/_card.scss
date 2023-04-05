@@ -16,8 +16,15 @@
     box-shadow: $shadow;
   }
 
-  .card-image {
-    border-radius: $border-radius;
+  .card-container-image {
+    text-align: center;
+
+    .card-image {
+      border-radius: $border-radius;
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+    }
   }
 
   .card-price {
@@ -53,12 +60,6 @@
 
     .card-container-image {
       max-width: 180px;
-
-      .card-image {
-        width: 180px;
-        height: 180px;
-        object-fit: cover;
-      }
     }
   }
 }
