@@ -99,8 +99,8 @@ router.get("/items/:id", async (req, res) => {
         title,
         price: {
           currency: currency_id,
-          amount: Math.floor(price).toString(),
-          decimals: ((price % 1) * 100).toFixed(0),
+          amount: Math.floor(price),
+          decimals: Number(((price % 1) * 100).toFixed(0)),
         },
         picture: pictures[0].secure_url,
         condition,
