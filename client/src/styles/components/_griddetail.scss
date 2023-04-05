@@ -8,6 +8,8 @@
   }
 
   .grid-detail-container-image {
+    text-align: center;
+
     @media (min-width: $breakpoint-small) {
       grid-column-start: 1;
       grid-column-end: 3;
@@ -35,11 +37,19 @@
     .grid-detail-sidebar-price {
       margin: 32px 0;
       color: $color-dark;
-      font-size: 46px;
+      font-size: 36px;
       font-weight: 400;
 
+      @media (min-width: $width-xl) {
+        font-size: 46px;
+      }
+
       .grid-detail-sidebar-price-decimal {
-        font-size: 20px;
+        font-size: 16px;
+
+        @media (min-width: $width-xl) {
+          font-size: 20px;
+        }
       }
 
       .grid-detail-sidebar-shipping {
@@ -69,6 +79,10 @@
       font-size: 16px;
       font-weight: 300;
       line-height: 1.5rem;
+
+      :not(p:last-child) {
+        margin-bottom: 15px;
+      }
     }
   }
 }
