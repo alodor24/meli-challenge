@@ -4,5 +4,15 @@
   .breadcrumb-text {
     font-size: 14px;
     color: $color-grey-middle;
+
+    span::after {
+      content: ">";
+      position: relative;
+      margin: 0 5px;
+    }
+
+    span:last-child::after {
+      content: none;
+    }
   }
 }

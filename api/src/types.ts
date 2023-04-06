@@ -15,6 +15,13 @@ export type ItemList = {
 
 export type ItemListResponse = {
   results: ItemList[];
+  filters: {
+    values: {
+      path_from_root: {
+        name: string;
+      }[];
+    }[];
+  }[];
 };
 
 export type ItemResponse = {

@@ -21,7 +21,7 @@ export type ItemsList = {
     name: string;
     lastname: string;
   };
-  categories: [];
+  categories: string[];
   items: Item[];
 };
 

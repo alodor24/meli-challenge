@@ -20,7 +20,7 @@ router.get("/items", async (req, res) => {
       `${BASE_URL}/sites/MLA/search?q=${q}&limit=${LIMIT}`
     ).then((response) => response.json());
 
-    const { results } = itemsData;
+    const { results, filters } = itemsData;
 
     const items = results.map(
       ({
@@ -49,12 +49,20 @@ router.get("/items", async (req, res) => {
       }
     );
 
+    let itemCategories;
+
+    if (filters.length) {
+      itemCategories = filters[0].values[0].path_from_root.map(
+        (category) => category.name
+      );
+    }
+
     const data = {
       author: {
         name: "José Alejandro",
         lastname: "Méndez Sánchez",
       },
-      categories: [],
+      categories: itemCategories || [],
       items,
     };
 
