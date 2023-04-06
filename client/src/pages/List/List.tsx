@@ -4,7 +4,7 @@ import Loader from "../../components/Loader";
 import useGetItemsList from "../../hooks/useGetItemsList";
 
 const List = () => {
-  const { data, isLoading } = useGetItemsList({ search: "guitarra" });
+  const { data, isLoading } = useGetItemsList({ search: "psp" });
 
   return (
     <Layout>
