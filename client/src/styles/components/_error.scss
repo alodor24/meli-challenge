@@ -1,0 +1,22 @@
+.error {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+
+  .error-image {
+    width: 300px;
+  }
+
+  .error-text {
+    text-align: center;
+    color: $color-grey-dark;
+    margin-bottom: 25px;
+  }
+
+  .error-link {
+    color: $color-blue;
+  }
+}

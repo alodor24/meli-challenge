@@ -3,10 +3,15 @@ import Button from "../Button";
 import useGetItemDetail from "../../hooks/useGetItemDetail";
 import { currencyFormatter } from "../../helpers/utils";
 import Loader from "../Loader";
+import Error from "../Error";
 
 const GridDetail = () => {
   const { itemId } = useParams<{ itemId: string }>();
-  const { data, isLoading } = useGetItemDetail({ itemId });
+  const { data, isLoading, error } = useGetItemDetail({ itemId });
+
+  if (error) {
+    return <Error />;
+  }
 
   return (
     <>
