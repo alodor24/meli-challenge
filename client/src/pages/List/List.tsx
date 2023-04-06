@@ -7,13 +7,12 @@ import useSearchContext from "../../context/SearchContext/useSearchContext";
 import { useEffect } from "react";
 
 const List = () => {
+  const { search } = useLocation();
   const { setSearchValue } = useSearchContext();
   const { data, isLoading } = useGetItemsList();
 
-  const { search } = useLocation();
-  const query = new URLSearchParams(search);
-
   useEffect(() => {
+    const query = new URLSearchParams(search);
     const searchValue = query.get("search");
     if (searchValue) {
       setSearchValue(searchValue);
