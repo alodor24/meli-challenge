@@ -21,6 +21,10 @@ const useGetItemDetail = ({ itemId }: Props) => {
           setIsLoading(false);
           setError(true);
         }
+      })
+      .catch(() => {
+        setIsLoading(false);
+        setError(true);
       });
   }, []);
 

@@ -1,8 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "/assets/images/logo.png";
 import IconSearch from "/assets/images/icon-search.png";
+import { useState } from "react";
+import useSearchContext from "../../context/SearchContext/useSearchContext";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const [value, setValue] = useState<string>("");
+  const { setSearchValue } = useSearchContext();
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (value !== "") {
+      setSearchValue(value);
+      navigate(`/items?search=${value}`);
+    }
+  };
+
+  const handleChange = (value: string) => {
+    setValue(value);
+  };
+
   return (
     <nav className="navbar">
       <div className="container navbar-wrapper">
@@ -17,11 +35,12 @@ const Navbar = () => {
           />
         </Link>
 
-        <form className="navbar-search">
+        <form className="navbar-search" onSubmit={handleSubmit}>
           <input
             className="navbar-search-input"
             placeholder="Nunca dejes de buscar"
             type="search"
+            onChange={(event) => handleChange(event.target.value)}
           />
           <button className="navbar-search-button">
             <img src={IconSearch} alt="Icon Search" width={18} loading="lazy" />

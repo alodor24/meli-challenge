@@ -1,10 +1,24 @@
+import { useLocation } from "react-router-dom";
 import Card from "../../components/Card";
 import Layout from "../../components/Layout";
 import Loader from "../../components/Loader";
 import useGetItemsList from "../../hooks/useGetItemsList";
+import useSearchContext from "../../context/SearchContext/useSearchContext";
+import { useEffect } from "react";
 
 const List = () => {
-  const { data, isLoading } = useGetItemsList({ search: "psp" });
+  const { setSearchValue } = useSearchContext();
+  const { data, isLoading } = useGetItemsList();
+
+  const { search } = useLocation();
+  const query = new URLSearchParams(search);
+
+  useEffect(() => {
+    const searchValue = query.get("search");
+    if (searchValue) {
+      setSearchValue(searchValue);
+    }
+  }, []);
 
   return (
     <Layout>
