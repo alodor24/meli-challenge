@@ -28,3 +28,9 @@ José Alejandro Méndez Sánchez
 2. En `client` debemos ejecutar los mismos comandos
 
 #### Demo
+
+![](https://github.com/alodor24/meli-challenge/blob/main/client/public/assets/images/demo/home.jpg)
+![](https://github.com/alodor24/meli-challenge/blob/main/client/public/assets/images/demo/list.jpg)
+![](https://github.com/alodor24/meli-challenge/blob/main/client/public/assets/images/demo/list_m.jpg)
+![](https://github.com/alodor24/meli-challenge/blob/main/client/public/assets/images/demo/detail.jpg)
+![](https://github.com/alodor24/meli-challenge/blob/main/client/public/assets/images/demo/detail_m.jpg)
