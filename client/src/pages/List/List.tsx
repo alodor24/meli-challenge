@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 const List = () => {
   const { search } = useLocation();
-  const { setSearchValue } = useSearchContext();
+  const { searchValue, setSearchValue } = useSearchContext();
   const { data, isLoading } = useGetItemsList();
 
   useEffect(() => {
@@ -20,7 +20,14 @@ const List = () => {
   }, []);
 
   return (
-    <Layout>
+    <Layout
+      title={
+        searchValue
+          ? searchValue[0].toUpperCase() + searchValue.substring(1)
+          : "Lista de Productos"
+      }
+      description="Lista de productos encontrados"
+    >
       <>
         {isLoading ? (
           <Loader />

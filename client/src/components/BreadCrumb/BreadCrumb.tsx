@@ -6,7 +6,7 @@ const BreadCrumb = () => {
   return (
     <section className="breadcrumb">
       <p className="breadcrumb-text">
-        {data && data.categories.length > 0 ? (
+        {data?.categories && data.categories.length > 0 ? (
           data.categories.map((category, index) => (
             <span key={index}>{category}</span>
           ))

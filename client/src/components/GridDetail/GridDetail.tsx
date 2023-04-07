@@ -1,14 +1,16 @@
-import { useParams } from "react-router-dom";
 import Button from "../Button";
-import useGetItemDetail from "../../hooks/useGetItemDetail";
 import { currencyFormatter } from "../../helpers/utils";
 import Loader from "../Loader";
 import Error from "../Error";
+import { ItemDetail } from "../../constants/types";
 
-const GridDetail = () => {
-  const { itemId } = useParams<{ itemId: string }>();
-  const { data, isLoading, error } = useGetItemDetail({ itemId });
+type Props = {
+  data?: ItemDetail;
+  isLoading: boolean;
+  error: boolean;
+};
 
+const GridDetail: React.FC<Props> = ({ data, isLoading, error }) => {
   if (error) {
     return <Error />;
   }
