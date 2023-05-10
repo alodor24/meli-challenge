@@ -66,25 +66,27 @@ router.get("/items", async (req, res) => {
       items,
     };
 
-    res.send(data);
+    res.status(200).send(data);
   } catch (error) {
     console.error(error);
-    res.send(error);
+    res.status(404).send(error);
   }
 });
 
 // Get Item by ID
 router.get("/items/:id", async (req, res) => {
-  const itemId = req.params.id;
+  const { id: itemId } = req.params;
 
   try {
-    const itemData: ItemResponse = await fetch(
-      `${BASE_URL}/items/${itemId}`
-    ).then((response) => response.json());
-
-    const itemDescription: ItemDescriptionResponse = await fetch(
-      `${BASE_URL}/items/${itemId}/description`
-    ).then((response) => response.json());
+    const [itemData, itemDescription]: [ItemResponse, ItemDescriptionResponse] =
+      await Promise.all([
+        fetch(`${BASE_URL}/items/${itemId}`).then((response) =>
+          response.json()
+        ),
+        fetch(`${BASE_URL}/items/${itemId}/description`).then((response) =>
+          response.json()
+        ),
+      ]);
 
     const {
       id,
@@ -117,11 +119,10 @@ router.get("/items/:id", async (req, res) => {
         description: itemDescription.plain_text,
       },
     };
-
-    res.send(data);
+    res.status(200).send(data);
   } catch (error) {
     console.error(error);
-    res.send(error);
+    res.status(404).send(error);
   }
 });
 
