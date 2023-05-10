@@ -1,5 +1,4 @@
 import * as dotenv from "dotenv";
-dotenv.config();
 import express from "express";
 import {
   ItemDescriptionResponse,
@@ -7,6 +6,7 @@ import {
   ItemResponse,
 } from "../types";
 
+dotenv.config();
 const router = express.Router();
 const BASE_URL = process.env.BASE_URL;
 const LIMIT = 4;
