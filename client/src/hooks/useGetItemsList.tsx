@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ItemsList } from "../constants/types";
+import { ItemsList } from "../types";
 import useSearchContext from "../context/SearchContext/useSearchContext";
 
 const useGetItemsList = () => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ItemDetail } from "../constants/types";
+import { ItemDetail } from "../types";
 
 type Props = {
   itemId?: string;
