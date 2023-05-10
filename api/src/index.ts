@@ -7,16 +7,11 @@ dotenv.config();
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`server on port ${PORT}`);
-});
-
-app.get("/", (_req, res) => {
-  res.redirect("/api");
+  console.log(`server listening on port ${PORT}`);
 });
 
 app.use("/api/", router);
 
-app.use(function (_req, res, _next) {
-  res.status(404);
-  res.send({ error: "Ups! Solicitud no encontrada" });
+app.use((_req, res) => {
+  res.status(404).send({ error: "Ups! Solicitud no encontrada" });
 });
