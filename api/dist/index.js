@@ -32,13 +32,9 @@ const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 app_1.default.listen(PORT, () => {
-    console.log(`server on port ${PORT}`);
-});
-app_1.default.get("/", (_req, res) => {
-    res.redirect("/api");
+    console.log(`server listening on port ${PORT}`);
 });
 app_1.default.use("/api/", routes_1.default);
-app_1.default.use(function (_req, res, _next) {
-    res.status(404);
-    res.send({ error: "Ups! Solicitud no encontrada" });
+app_1.default.use((_req, res) => {
+    res.status(404).send({ error: "Ups! Solicitud no encontrada" });
 });

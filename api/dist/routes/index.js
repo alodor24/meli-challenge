@@ -36,8 +36,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv = __importStar(require("dotenv"));
-dotenv.config();
 const express_1 = __importDefault(require("express"));
+dotenv.config();
 const router = express_1.default.Router();
 const BASE_URL = process.env.BASE_URL;
 const LIMIT = 4;
@@ -74,19 +74,21 @@ router.get("/items", (req, res) => __awaiter(void 0, void 0, void 0, function* (
             categories: itemCategories || [],
             items,
         };
-        res.send(data);
+        res.status(200).send(data);
     }
     catch (error) {
         console.error(error);
-        res.send(error);
+        res.status(404).send(error);
     }
 }));
 // Get Item by ID
 router.get("/items/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const itemId = req.params.id;
+    const { id: itemId } = req.params;
     try {
-        const itemData = yield fetch(`${BASE_URL}/items/${itemId}`).then((response) => response.json());
-        const itemDescription = yield fetch(`${BASE_URL}/items/${itemId}/description`).then((response) => response.json());
+        const [itemData, itemDescription] = yield Promise.all([
+            fetch(`${BASE_URL}/items/${itemId}`).then((response) => response.json()),
+            fetch(`${BASE_URL}/items/${itemId}/description`).then((response) => response.json()),
+        ]);
         const { id, title, price, currency_id, pictures, condition, shipping: { free_shipping }, sold_quantity, } = itemData;
         const data = {
             author: {
@@ -108,11 +110,11 @@ router.get("/items/:id", (req, res) => __awaiter(void 0, void 0, void 0, functio
                 description: itemDescription.plain_text,
             },
         };
-        res.send(data);
+        res.status(200).send(data);
     }
     catch (error) {
         console.error(error);
-        res.send(error);
+        res.status(404).send(error);
     }
 }));
 exports.default = router;
