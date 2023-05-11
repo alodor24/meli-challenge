@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import BreadCrumb from "../BreadCrumb";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
@@ -15,10 +15,12 @@ const Layout: React.FC<Props> = ({ children, title, description }) => {
 
   return (
     <>
-      <Helmet>
-        <title>Mercado Libre | {title}</title>
-        <meta name="description" content={description} />
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>Mercado Libre | {title}</title>
+          <meta name="description" content={description} />
+        </Helmet>
+      </HelmetProvider>
       <Navbar />
       <main className="container">
         {pathname !== "/" && <BreadCrumb />}
