@@ -2,7 +2,7 @@ import Button from "../Button";
 import { currencyFormatter } from "../../helpers/utils";
 import Loader from "../Loader";
 import Error from "../Error";
-import { ItemDetail } from "../../constants/types";
+import { ItemDetail } from "../../types";
 
 type Props = {
   data?: ItemDetail;

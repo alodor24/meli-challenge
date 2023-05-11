@@ -5,11 +5,12 @@ import Loader from "../../components/Loader";
 import useGetItemsList from "../../hooks/useGetItemsList";
 import useSearchContext from "../../context/SearchContext/useSearchContext";
 import { useEffect } from "react";
+import Error from "../../components/Error/Error";
 
 const List = () => {
   const { search } = useLocation();
   const { searchValue, setSearchValue } = useSearchContext();
-  const { data, isLoading } = useGetItemsList();
+  const { data, isLoading, error } = useGetItemsList();
 
   useEffect(() => {
     const query = new URLSearchParams(search);
@@ -29,7 +30,9 @@ const List = () => {
       description="Lista de productos encontrados"
     >
       <>
-        {isLoading ? (
+        {error ? (
+          <Error />
+        ) : isLoading ? (
           <Loader />
         ) : (
           <div>
