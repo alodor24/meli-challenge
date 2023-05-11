@@ -1,8 +1,11 @@
+import { useRef, useState } from "react";
 import Button from "../Button";
 import { currencyFormatter } from "../../helpers/utils";
+import { CSSTransition } from "react-transition-group";
 import Loader from "../Loader";
 import Error from "../Error";
 import { ItemDetail } from "../../types";
+import Message from "../Message/Message";
 
 type Props = {
   data?: ItemDetail;
@@ -11,6 +14,13 @@ type Props = {
 };
 
 const GridDetail: React.FC<Props> = ({ data, isLoading, error }) => {
+  const [showMessage, setShowMessage] = useState<boolean>(false);
+  const nodeRef = useRef(null);
+
+  const handleClick = () => {
+    setShowMessage(true);
+  };
+
   if (error) {
     return <Error />;
   }
@@ -21,6 +31,16 @@ const GridDetail: React.FC<Props> = ({ data, isLoading, error }) => {
         <Loader />
       ) : (
         <div className="grid-detail">
+          <CSSTransition
+            nodeRef={nodeRef}
+            in={showMessage}
+            timeout={500}
+            classNames="alert"
+            unmountOnExit
+          >
+            <Message innerRef={nodeRef} text="Añadido al carrito" />
+          </CSSTransition>
+
           <figure className="grid-detail-container-image">
             <img
               className="img-responsive"
@@ -56,7 +76,11 @@ const GridDetail: React.FC<Props> = ({ data, isLoading, error }) => {
                 />
               )}
             </h2>
-            <Button text="Comprar" />
+            <Button
+              onClick={handleClick}
+              text={showMessage ? "Añadido" : "Comprar"}
+              disabled={showMessage}
+            />
           </aside>
 
           <section className="grid-detail-description">
