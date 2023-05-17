@@ -11,24 +11,31 @@ const useGetItemDetail = ({ itemId }: Props) => {
   const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
-    if (itemId) {
-      fetch(`${import.meta.env.VITE_BASE_URL}/api/items/${itemId}`)
-        .then((resp) => resp.json())
-        .then((data) => {
-          if (Object.entries(data).length !== 0) {
-            setData(data);
-            return;
-          }
-          setError(true);
-        })
-        .catch(() => {
-          setError(true);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
-  }, []);
+    const fetchItemDetail = async () => {
+      try {
+        await fetch(`${import.meta.env.VITE_BASE_URL}/api/items/${itemId}`)
+          .then((resp) => resp.json())
+          .then((data) => {
+            if (Object.entries(data).length !== 0) {
+              setData(data);
+              return;
+            }
+            setError(true);
+          })
+          .catch((error) => {
+            throw new Error(error);
+          })
+          .finally(() => {
+            setIsLoading(false);
+          });
+      } catch (error) {
+        console.log(error);
+        setError(true);
+      }
+    };
+
+    if (itemId) fetchItemDetail();
+  }, [itemId]);
 
   return {
     data,
