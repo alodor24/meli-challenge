@@ -22,6 +22,8 @@ router.get("/items", async (req, res) => {
 
     const { results, filters } = itemsData;
 
+    if (results.length < 1) throw new Error();
+
     const items = results.map(
       ({
         id,
