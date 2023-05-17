@@ -2,17 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "/assets/images/logo.png";
 import IconSearch from "/assets/images/icon-search.png";
 import { useState } from "react";
-import useSearchContext from "../../context/SearchContext/useSearchContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [value, setValue] = useState<string>("");
-  const { setSearchValue } = useSearchContext();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (value !== "") {
-      setSearchValue(value);
       navigate(`/items?search=${value}`);
     }
   };

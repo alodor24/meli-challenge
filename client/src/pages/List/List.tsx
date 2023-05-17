@@ -3,22 +3,19 @@ import Card from "../../components/Card";
 import Layout from "../../components/Layout";
 import Loader from "../../components/Loader";
 import useGetItemsList from "../../hooks/useGetItemsList";
-import useSearchContext from "../../context/SearchContext/useSearchContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Error from "../../components/Error/Error";
 
 const List = () => {
   const { search } = useLocation();
-  const { searchValue, setSearchValue } = useSearchContext();
-  const { data, isLoading, error } = useGetItemsList();
+  const [searchValue, setSearchValue] = useState<string>("");
+  const { data, isLoading, error } = useGetItemsList({ searchValue });
 
   useEffect(() => {
     const query = new URLSearchParams(search);
-    const searchValue = query.get("search");
-    if (searchValue) {
-      setSearchValue(searchValue);
-    }
-  }, []);
+    const value = query.get("search");
+    if (value) setSearchValue(value);
+  }, [search]);
 
   return (
     <Layout
