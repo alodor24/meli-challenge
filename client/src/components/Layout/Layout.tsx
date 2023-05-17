@@ -23,7 +23,7 @@ const Layout: React.FC<Props> = ({ children, title, description }) => {
       </HelmetProvider>
       <Navbar />
       <main className="container">
-        {pathname !== "/" && <BreadCrumb />}
+        {/* {pathname !== "/" && <BreadCrumb />} */}
         <section className="layout-section">{children}</section>
       </main>
       <Footer />
