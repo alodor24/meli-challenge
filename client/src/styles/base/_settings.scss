@@ -52,3 +52,8 @@ button {
 .img-responsive {
   max-width: 100%;
 }
+
+.wrapper-container {
+  background-color: $color-white;
+  min-height: calc(100vh - 130px);
+}

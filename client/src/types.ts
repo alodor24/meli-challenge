@@ -30,5 +30,6 @@ export type ItemDetail = {
     lastname: string;
     name: string;
   };
+  categories: string[];
   item: Item;
 };

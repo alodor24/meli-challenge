@@ -2,6 +2,7 @@ import * as dotenv from "dotenv";
 import express from "express";
 import {
   ItemDescriptionResponse,
+  ItemDetailCategoryResponse,
   ItemListResponse,
   ItemResponse,
 } from "../types";
@@ -99,13 +100,23 @@ router.get("/items/:id", async (req, res) => {
       condition,
       shipping: { free_shipping },
       sold_quantity,
+      category_id,
     } = itemData;
+
+    const itemCategoryData: ItemDetailCategoryResponse = await fetch(
+      `${BASE_URL}/categories/${category_id}`
+    ).then((response) => response.json());
+
+    const itemCategory = itemCategoryData.path_from_root.map(
+      (category) => category.name
+    );
 
     const data = {
       author: {
         name: "José Alejandro",
         lastname: "Méndez Sánchez",
       },
+      categories: itemCategory,
       item: {
         id,
         title,

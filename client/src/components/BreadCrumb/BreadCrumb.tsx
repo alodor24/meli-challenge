@@ -1,20 +1,23 @@
-import useGetItemsList from "../../hooks/useGetItemsList";
+import { ItemDetail, ItemsList } from "../../types";
 
-const BreadCrumb = () => {
-  // const { data } = useGetItemsList({ searchValue: "ropa" });
-  // return (
-  //   <section className="breadcrumb">
-  //     <p className="breadcrumb-text">
-  //       {data?.categories && data.categories.length > 0 ? (
-  //         data.categories.map((category, index) => (
-  //           <span key={index}>{category}</span>
-  //         ))
-  //       ) : (
-  //         <span>Categoría no específicada</span>
-  //       )}
-  //     </p>
-  //   </section>
-  // );
+type Props = {
+  data?: ItemsList | ItemDetail;
+};
+
+const BreadCrumb: React.FC<Props> = ({ data }) => {
+  return (
+    <section className="breadcrumb">
+      <p className="breadcrumb-text">
+        {data?.categories && data.categories.length > 0 ? (
+          data.categories.map((category, index) => (
+            <span key={index}>{category}</span>
+          ))
+        ) : (
+          <span>Categoría no específicada</span>
+        )}
+      </p>
+    </section>
+  );
 };
 
 export default BreadCrumb;

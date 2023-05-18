@@ -5,7 +5,9 @@ const Home = () => {
     <Layout
       title="Challenge"
       description="Página principal del challenge técnico para optar al puesto de frontend en mercadolibre argentina"
-    />
+    >
+      <div className="wrapper-container" />
+    </Layout>
   );
 };
 

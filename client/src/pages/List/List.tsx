@@ -4,7 +4,8 @@ import Layout from "../../components/Layout";
 import Loader from "../../components/Loader";
 import useGetItemsList from "../../hooks/useGetItemsList";
 import { useEffect, useState } from "react";
-import Error from "../../components/Error/Error";
+import Error from "../../components/Error";
+import BreadCrumb from "../../components/BreadCrumb";
 
 const List = () => {
   const { search } = useLocation();
@@ -33,6 +34,7 @@ const List = () => {
           <Loader />
         ) : (
           <div>
+            <BreadCrumb data={data} />
             {(data?.items || []).map((item) => (
               <Card
                 key={item.id}

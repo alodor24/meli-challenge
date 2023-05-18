@@ -37,8 +37,15 @@ export type ItemResponse = {
     free_shipping: boolean;
   };
   sold_quantity: number;
+  category_id: string;
 };
 
 export type ItemDescriptionResponse = {
   plain_text: string;
+};
+
+export type ItemDetailCategoryResponse = {
+  path_from_root: {
+    name: string;
+  }[];
 };
